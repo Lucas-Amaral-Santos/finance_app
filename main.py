@@ -7,7 +7,12 @@ mes_options = [i for i in range(1,13)]
 
 mes = st.selectbox("Mês", options=mes_options, index=datetime.today().month)
 
-transacoes = pd.read_csv(f"transacoes{mes}{datetime.today().year}.csv", sep=';', index_col=None)
+try:
+    transacoes = pd.read_csv(f"transacoes{mes}{datetime.today().year}.csv", sep=';', index_col=None)
+except:
+    transacoes = pd.DataFrame(columns=['area_input','local_input','valor_input','tipo_input','moeda_input','dia_input','hora_input'])
+
+
 
 tab1, tab2, tab3 = st.tabs(["Compras", "Extrato", 'Visão Geral'])
 tab1.write("Adicionar compras")
