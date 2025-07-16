@@ -83,14 +83,14 @@ with tab2:
 
 with tab3:
     receita = transacoes[transacoes['tipo_input']=='Receita']['valor_input'].sum()
-    receita_str = f"## Receita {receita}"
+    receita_str = f"## Receita {round(receita, 2)}"
     st.markdown(receita_str)
 
     despesa = transacoes[transacoes['tipo_input']=='Despesa']['valor_input'].sum()
-    despesa_str = f"## Despesa {despesa}"
+    despesa_str = f"## Despesa {round(despesa,2)}"
     st.markdown(despesa_str)
 
-    lucro_divida_str = f"## Lucro/Divida {receita - despesa}"
+    lucro_divida_str = f"## Lucro/Divida {round(receita - despesa,2)}"
     st.markdown(lucro_divida_str)
 
     group_despesa = transacoes[transacoes['tipo_input']=='Despesa'].groupby(by=['area_input'])['valor_input'].sum()
