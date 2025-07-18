@@ -78,7 +78,7 @@ with tab2:
 
         st.download_button(
            label="Download",
-           data=transacoes.to_csv(index=False).encode("utf-8"),
+           data=transacoes.to_csv(index=False, sep=';').encode("utf-8"),
            file_name = f"transacoes{mes}{datetime.today().year}.csv",
            mime="text/csv",
            key='download-csv'

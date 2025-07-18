@@ -1,85 +1,85 @@
-area_input,local_input,valor_input,tipo_input,moeda_input,dia_input,hora_input
-Utensílios,SAF Botafogo 03/04,77.03,Despesa,R$,2025-07-05,22:16:00
-Vestuário,Netshoes,60.02,Despesa,R$,2025-07-14,22:16:00
-Refeição,Conversa Fora,103.32,Despesa,R$,2025-06-27,22:16:00
-Refeição,Cantina Luís,32.95,Despesa,R$,2025-06-27,22:16:00
-Transporte,Riocard MAIS,30.0,Despesa,R$,2025-06-27,22:16:00
-Refeição,MULTI FRUTI PRINCIPE,41.98,Despesa,R$,2025-06-28,22:16:00
-Transporte,METRO RJ,7.9,Despesa,R$,2025-06-29,22:16:00
-Transporte,METRO RJ,7.9,Despesa,R$,2025-06-29,22:16:00
-Refeição,AL PIATTO DORO CAFE,36.04,Despesa,R$,2025-06-29,22:16:00
-Transporte,SUPERVIA,7.6,Despesa,R$,2025-06-29,22:16:00
-Transporte,Riocard MAIS ,10.0,Despesa,R$,2025-06-30,22:16:00
-Refeição,CANTINA DA FAMILIA,8.0,Despesa,R$,2025-06-30,22:16:00
-Refeição,Boteco do Djalma,24.15,Despesa,R$,2025-06-30,22:16:00
-Transporte,Riocard MAIS ,32.0,Despesa,R$,2025-07-01,22:16:00
-Lavanderia,LAV 60 MINUTOS,30.0,Despesa,R$,2025-07-01,22:16:00
-Refeição,AL PIATTO DORO CAFE,21.13,Despesa,R$,2025-07-01,22:16:00
-Lanche,Lojas Americanas,51.88,Despesa,R$,2025-07-01,22:16:00
-Refeição,AL PIATTO DORO CAFE,38.2,Despesa,R$,2025-07-02,22:16:00
-Supermercado,Supermercado Princesa,42.53,Despesa,R$,2025-07-02,22:16:00
-Refeição,Restaurante Relvadense,24.45,Despesa,R$,2025-07-02,22:16:00
-Refeição,Restaurante Relvadense,50.61,Despesa,R$,2025-07-03,22:16:00
-Refeição,Boteco do Djalma,50.61,Despesa,R$,2025-07-03,22:16:00
-Transporte,MAIS MOBI,29.0,Despesa,R$,2025-07-04,22:16:00
-Utensílios,CONTA CVOLTA,27.0,Despesa,R$,2025-07-04,22:16:00
-Bar,Caju,76.52,Despesa,R$,2025-07-04,22:16:00
-Vestuário,Luzzo,135.1,Despesa,R$,2025-07-05,22:16:00
-Transporte,METRO RJ,7.9,Despesa,R$,2025-07-05,22:16:00
-Vestuário,CITYCOL,61.97,Despesa,R$,2025-07-05,22:16:00
-Refeição,Restaurante Mané,23.04,Despesa,R$,2025-07-05,22:16:00
-Refeição,Restaurante Mané,45.2,Despesa,R$,2025-07-05,22:16:00
-Refeição,Kets Lanches,25.0,Despesa,R$,2025-07-05,22:16:00
-Refeição,IFOOD,21.39,Despesa,R$,2025-07-05,22:16:00
-Lazer,Anderson America,39.27,Despesa,R$,2025-07-05,22:16:00
-Lazer,Apple+,21.9,Despesa,R$,2025-07-06,22:16:00
-Refeição,Bar do Caramello,64.84,Despesa,R$,2025-07-06,22:16:00
-Refeição,Kets Lanches,25.0,Despesa,R$,2025-07-06,22:16:00
-Utensílios,D.REIS COMERCIO DE ALI,6.74,Despesa,R$,2025-07-06,22:16:00
-Transporte,Uber,36.91,Despesa,R$,2025-07-06,22:16:00
-Transporte,MAIS MOBI,29.0,Despesa,R$,2025-07-07,22:16:00
-Refeição,CANTINA DA FAMILIA,16.0,Despesa,R$,2025-07-07,22:16:00
-Supermercado,Pão de Açucar,38.68,Despesa,R$,2025-07-07,22:16:00
-Refeição,Restaurante Relvadense,35.6,Despesa,R$,2025-07-07,22:16:00
-Refeição,Restaurante Relvadense,32.72,Despesa,R$,2025-07-08,22:16:00
-Lanche,RAPIDEX,27.03,Despesa,R$,2025-07-08,22:16:00
-Refeição,AL PIATTO DORO CAFE,33.0,Despesa,R$,2025-07-08,22:16:00
-Vestuário,CITYCOL,49.99,Despesa,R$,2025-07-08,22:16:00
-Refeição,Restaurante Relvadense,33.98,Despesa,R$,2025-07-09,22:16:00
-Refeição,AL PIATTO DORO CAFE,34.46,Despesa,R$,2025-07-09,22:16:00
-Lanche,BIG NECTAR,21.0,Despesa,R$,2025-07-09,22:16:00
-Lanche,CANTINA DA FAMILIA,16.0,Despesa,R$,2025-07-09,22:16:00
-Transporte,MAIS MOBI,34.0,Despesa,R$,2025-07-09,22:16:00
-Refeição,Restaurante Relvadense,39.04,Despesa,R$,2025-07-10,22:16:00
-Transporte,METRO RJ,7.9,Despesa,R$,2025-07-10,22:16:00
-Transporte,METRO RJ,7.9,Despesa,R$,2025-07-10,22:16:00
-Refeição,AL PIATTO DORO CAFE,41.79,Despesa,R$,2025-07-10,22:16:00
-Lavanderia,LAV 60 MINUTOS,30.0,Despesa,R$,2025-07-10,22:16:00
-Transporte,MAIS MOBI,25.0,Despesa,R$,2025-07-11,22:16:00
-Lanche,CANTINA DA FAMILIA,16.0,Despesa,R$,2025-07-11,22:16:00
-Bar,CAFE E BISTRO LANGUEDO (BAR DO ALDO),87.45,Despesa,R$,2025-07-11,22:16:00
-Lanche,LAITTS SUCOS LTDA ME (HIPERMATE),30.0,Despesa,R$,2025-07-11,22:16:00
-Bar,PAVAO VERDE,102.16,Despesa,R$,2025-07-12,22:16:00
-Refeição,ATLANTICA ALIMENTACAO,79.09,Despesa,R$,2025-07-12,22:16:00
-Supermercado,MULTI FRUTI PRINCIPE,31.38,Despesa,R$,2025-07-13,22:16:00
-Lanche,MATE NA PRAIA,20.0,Despesa,R$,2025-07-13,22:16:00
-Refeição,OS IMORTAIS BAR,31.38,Despesa,R$,2025-07-13,22:16:00
-Salário,Associação Fluminense de Reabilitação,3264.34,Receita,R$,2025-07-01,22:16:00
-Salário,Fundação Euclides da Cunha,4400.0,Receita,R$,2025-07-01,22:16:00
-Lanche,CANTINA DA FAMILIA,16.0,Despesa,R$,2025-07-14,23:10:00
-Refeição,Restaurante Relvadense,51.51,Despesa,R$,2025-07-14,23:10:00
-Lanche,Lojas Americanas,23.98,Despesa,R$,2025-07-14,23:10:00
-Lavanderia,LAV 60 MINUTOS,30.0,Despesa,R$,2025-07-15,23:10:00
-Refeição,Boteco do Djalma,42.37,Despesa,R$,2025-07-15,23:10:00
-Lanche,Lojas Americanas,23.98,Despesa,R$,2025-07-15,23:10:00
-Transporte,MAIS MOBI,29.0,Despesa,R$,2025-07-16,19:44:00
-Lanche,CANTINA DA FAMILIA,16.0,Despesa,R$,2025-07-16,19:44:00
-Café,Nespresso,118.8,Despesa,R$,2025-07-11,19:44:00
-Lazer,Wellhub Gympass,265.9,Despesa,R$,2025-07-11,19:44:00
-Utensílios,TABLET SAMSUNG 4/6,533.2,Despesa,R$,2025-07-20,19:44:00
-Refeição,Restaurante Relvadense,37.51,Despesa,R$,2025-07-15,23:46:00
-Refeição,CANTINA DA FAMILIA,16.0,Despesa,R$,2025-07-16,23:46:00
-Refeição,Restaurante Relvadense,41.96,Despesa,R$,2025-07-16,23:46:00
-Refeição,Boteco do Djalma,35.0,Despesa,R$,2025-07-16,23:46:00
-Refeição,IFOOD,47.39,Despesa,R$,2025-07-14,23:46:00
-Refeição,IFOOD,46.99,Despesa,R$,2025-07-16,23:46:00
+area_input;local_input;valor_input;tipo_input;moeda_input;dia_input;hora_input
+Utensílios;SAF Botafogo 03/04;77.03;Despesa;R$;2025-07-05;22:16:00
+Vestuário;Netshoes;60.02;Despesa;R$;2025-07-14;22:16:00
+Refeição;Conversa Fora;103.32;Despesa;R$;2025-06-27;22:16:00
+Refeição;Cantina Luís;32.95;Despesa;R$;2025-06-27;22:16:00
+Transporte;Riocard MAIS;30.0;Despesa;R$;2025-06-27;22:16:00
+Refeição;MULTI FRUTI PRINCIPE;41.98;Despesa;R$;2025-06-28;22:16:00
+Transporte;METRO RJ;7.9;Despesa;R$;2025-06-29;22:16:00
+Transporte;METRO RJ;7.9;Despesa;R$;2025-06-29;22:16:00
+Refeição;AL PIATTO DORO CAFE;36.04;Despesa;R$;2025-06-29;22:16:00
+Transporte;SUPERVIA;7.6;Despesa;R$;2025-06-29;22:16:00
+Transporte;Riocard MAIS ;10.0;Despesa;R$;2025-06-30;22:16:00
+Refeição;CANTINA DA FAMILIA;8.0;Despesa;R$;2025-06-30;22:16:00
+Refeição;Boteco do Djalma;24.15;Despesa;R$;2025-06-30;22:16:00
+Transporte;Riocard MAIS ;32.0;Despesa;R$;2025-07-01;22:16:00
+Lavanderia;LAV 60 MINUTOS;30.0;Despesa;R$;2025-07-01;22:16:00
+Refeição;AL PIATTO DORO CAFE;21.13;Despesa;R$;2025-07-01;22:16:00
+Lanche;Lojas Americanas;51.88;Despesa;R$;2025-07-01;22:16:00
+Refeição;AL PIATTO DORO CAFE;38.2;Despesa;R$;2025-07-02;22:16:00
+Supermercado;Supermercado Princesa;42.53;Despesa;R$;2025-07-02;22:16:00
+Refeição;Restaurante Relvadense;24.45;Despesa;R$;2025-07-02;22:16:00
+Refeição;Restaurante Relvadense;50.61;Despesa;R$;2025-07-03;22:16:00
+Refeição;Boteco do Djalma;50.61;Despesa;R$;2025-07-03;22:16:00
+Transporte;MAIS MOBI;29.0;Despesa;R$;2025-07-04;22:16:00
+Utensílios;CONTA CVOLTA;27.0;Despesa;R$;2025-07-04;22:16:00
+Bar;Caju;76.52;Despesa;R$;2025-07-04;22:16:00
+Vestuário;Luzzo;135.1;Despesa;R$;2025-07-05;22:16:00
+Transporte;METRO RJ;7.9;Despesa;R$;2025-07-05;22:16:00
+Vestuário;CITYCOL;61.97;Despesa;R$;2025-07-05;22:16:00
+Refeição;Restaurante Mané;23.04;Despesa;R$;2025-07-05;22:16:00
+Refeição;Restaurante Mané;45.2;Despesa;R$;2025-07-05;22:16:00
+Refeição;Kets Lanches;25.0;Despesa;R$;2025-07-05;22:16:00
+Refeição;IFOOD;21.39;Despesa;R$;2025-07-05;22:16:00
+Lazer;Anderson America;39.27;Despesa;R$;2025-07-05;22:16:00
+Lazer;Apple+;21.9;Despesa;R$;2025-07-06;22:16:00
+Refeição;Bar do Caramello;64.84;Despesa;R$;2025-07-06;22:16:00
+Refeição;Kets Lanches;25.0;Despesa;R$;2025-07-06;22:16:00
+Utensílios;D.REIS COMERCIO DE ALI;6.74;Despesa;R$;2025-07-06;22:16:00
+Transporte;Uber;36.91;Despesa;R$;2025-07-06;22:16:00
+Transporte;MAIS MOBI;29.0;Despesa;R$;2025-07-07;22:16:00
+Refeição;CANTINA DA FAMILIA;16.0;Despesa;R$;2025-07-07;22:16:00
+Supermercado;Pão de Açucar;38.68;Despesa;R$;2025-07-07;22:16:00
+Refeição;Restaurante Relvadense;35.6;Despesa;R$;2025-07-07;22:16:00
+Refeição;Restaurante Relvadense;32.72;Despesa;R$;2025-07-08;22:16:00
+Lanche;RAPIDEX;27.03;Despesa;R$;2025-07-08;22:16:00
+Refeição;AL PIATTO DORO CAFE;33.0;Despesa;R$;2025-07-08;22:16:00
+Vestuário;CITYCOL;49.99;Despesa;R$;2025-07-08;22:16:00
+Refeição;Restaurante Relvadense;33.98;Despesa;R$;2025-07-09;22:16:00
+Refeição;AL PIATTO DORO CAFE;34.46;Despesa;R$;2025-07-09;22:16:00
+Lanche;BIG NECTAR;21.0;Despesa;R$;2025-07-09;22:16:00
+Lanche;CANTINA DA FAMILIA;16.0;Despesa;R$;2025-07-09;22:16:00
+Transporte;MAIS MOBI;34.0;Despesa;R$;2025-07-09;22:16:00
+Refeição;Restaurante Relvadense;39.04;Despesa;R$;2025-07-10;22:16:00
+Transporte;METRO RJ;7.9;Despesa;R$;2025-07-10;22:16:00
+Transporte;METRO RJ;7.9;Despesa;R$;2025-07-10;22:16:00
+Refeição;AL PIATTO DORO CAFE;41.79;Despesa;R$;2025-07-10;22:16:00
+Lavanderia;LAV 60 MINUTOS;30.0;Despesa;R$;2025-07-10;22:16:00
+Transporte;MAIS MOBI;25.0;Despesa;R$;2025-07-11;22:16:00
+Lanche;CANTINA DA FAMILIA;16.0;Despesa;R$;2025-07-11;22:16:00
+Bar;CAFE E BISTRO LANGUEDO (BAR DO ALDO);87.45;Despesa;R$;2025-07-11;22:16:00
+Lanche;LAITTS SUCOS LTDA ME (HIPERMATE);30.0;Despesa;R$;2025-07-11;22:16:00
+Bar;PAVAO VERDE;102.16;Despesa;R$;2025-07-12;22:16:00
+Refeição;ATLANTICA ALIMENTACAO;79.09;Despesa;R$;2025-07-12;22:16:00
+Supermercado;MULTI FRUTI PRINCIPE;31.38;Despesa;R$;2025-07-13;22:16:00
+Lanche;MATE NA PRAIA;20.0;Despesa;R$;2025-07-13;22:16:00
+Refeição;OS IMORTAIS BAR;31.38;Despesa;R$;2025-07-13;22:16:00
+Salário;Associação Fluminense de Reabilitação;3264.34;Receita;R$;2025-07-01;22:16:00
+Salário;Fundação Euclides da Cunha;4400.0;Receita;R$;2025-07-01;22:16:00
+Lanche;CANTINA DA FAMILIA;16.0;Despesa;R$;2025-07-14;23:10:00
+Refeição;Restaurante Relvadense;51.51;Despesa;R$;2025-07-14;23:10:00
+Lanche;Lojas Americanas;23.98;Despesa;R$;2025-07-14;23:10:00
+Lavanderia;LAV 60 MINUTOS;30.0;Despesa;R$;2025-07-15;23:10:00
+Refeição;Boteco do Djalma;42.37;Despesa;R$;2025-07-15;23:10:00
+Lanche;Lojas Americanas;23.98;Despesa;R$;2025-07-15;23:10:00
+Transporte;MAIS MOBI;29.0;Despesa;R$;2025-07-16;19:44:00
+Lanche;CANTINA DA FAMILIA;16.0;Despesa;R$;2025-07-16;19:44:00
+Café;Nespresso;118.8;Despesa;R$;2025-07-11;19:44:00
+Lazer;Wellhub Gympass;265.9;Despesa;R$;2025-07-11;19:44:00
+Utensílios;TABLET SAMSUNG 4/6;533.2;Despesa;R$;2025-07-20;19:44:00
+Refeição;Restaurante Relvadense;37.51;Despesa;R$;2025-07-15;23:46:00
+Refeição;CANTINA DA FAMILIA;16.0;Despesa;R$;2025-07-16;23:46:00
+Refeição;Restaurante Relvadense;41.96;Despesa;R$;2025-07-16;23:46:00
+Refeição;Boteco do Djalma;35.0;Despesa;R$;2025-07-16;23:46:00
+Refeição;IFOOD;47.39;Despesa;R$;2025-07-14;23:46:00
+Refeição;IFOOD;46.99;Despesa;R$;2025-07-16;23:46:00
