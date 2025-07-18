@@ -75,6 +75,15 @@ with tab2:
         #event.selection
         #print(event.selection["rows"])
 
+
+        st.download_button(
+           label="Download",
+           data=transacoes.to_csv(index=False).encode("utf-8"),
+           file_name = f"transacoes{mes}{datetime.today().year}.csv",
+           mime="text/csv",
+           key='download-csv'
+        )
+
         if st.button("Apagar transações marcadas"):
             transacoes.drop(event.selection["rows"], inplace=True)
             transacoes.to_csv(f'transacoes{mes}{datetime.today().year}.csv', sep=';', index=False)
