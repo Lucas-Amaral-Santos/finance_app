@@ -3,6 +3,8 @@ import pandas as pd
 from datetime import datetime
 import altair as alt
 from google.cloud import firestore
+import json
+
 
 
 if not st.user.is_logged_in:
@@ -24,7 +26,10 @@ else:
 
 
 
-    firestore_client = firestore.Client.from_service_account_json('ifinance-key.json')
+    #firestore_client = firestore.Client.from_service_account_json('ifinance-key.json')
+    key_dict = json.loads(st.secrets["textkey"])
+    creds = service_account.Credentials.from_service_account_info(key_dict)
+    firestore_client = firestore.Client(credentials=creds, project="ifinance-9a0f9")
 
     print(firestore_client.project)
 
@@ -49,8 +54,8 @@ else:
         data = []
         for doc in docs:
             doc_dict = doc.to_dict()
-            # print(f"{doc_dict['user']} == {st.user.email} || {doc_dict['mes']} ({type(doc_dict['mes'])}) == {mes}({type(mes)}) --> {doc_dict['mes'] == mes and doc_dict['user']==st.user.email}")
-            if doc_dict['mes'] == mes and doc_dict['user']==st.user.email:      
+            print(f"{doc_dict['user']} == {st.user.email} || {doc_dict['mes']} ({type(doc_dict['mes'])}) == {mes}({type(mes)}) --> {doc_dict['mes'] == mes and doc_dict['user']==st.user.email}")
+            if doc_dict['mes'] == mes:      
                 data.append(doc_dict)
 
         return pd.DataFrame(data)
