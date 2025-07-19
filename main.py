@@ -12,7 +12,8 @@ if not st.user.is_logged_in:
 
     st.title('Authentication')
 
-    if st.button("Authenticate"):
+
+    if st.button("Entrar com Google", icon=":material/g_mobiledata:"):
         st.login("google")
 
 
