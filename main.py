@@ -22,10 +22,10 @@ else:
 
     st.markdown('# Finanças')
 
-    st.header(f'Bem-vindo {st.user.name}')
+    # st.header(f'Bem-vindo {st.user.given_name}')
     st.image(st.user.picture)
 
-
+    # st.json(st.user)
 
     #firestore_client = firestore.Client.from_service_account_json('firestore-key.json')
     key_dict = st.secrets["gcp"]
@@ -57,7 +57,7 @@ else:
         for doc in docs:
             doc_dict = doc.to_dict()
             print(f"{doc_dict['user']} == {st.user.email} || {doc_dict['mes']} ({type(doc_dict['mes'])}) == {mes}({type(mes)}) --> {doc_dict['mes'] == mes and doc_dict['user']==st.user.email}")
-            if doc_dict['mes'] == mes:      
+            if doc_dict['mes'] == mes and doc_dict['user']==st.user.email:      
                 data.append(doc_dict)
 
         return pd.DataFrame(data)
@@ -193,32 +193,61 @@ else:
 
 
     with tab3:
-        receita = transacoes[transacoes['tipo_input']=='Receita']['valor_input'].sum()
-        receita_str = f"## Receita {round(receita, 2)}"
-        st.markdown(receita_str)
 
-        despesa = transacoes[transacoes['tipo_input']=='Despesa']['valor_input'].sum()
-        despesa_str = f"## Despesa {round(despesa,2)}"
-        st.markdown(despesa_str)
+        try:
+            receita = transacoes[transacoes['tipo_input']=='Receita']['valor_input'].sum()
+            receita_str = f"## Receita {round(receita, 2)}"
+            st.markdown(receita_str)
+        except:
+            pass
 
-        lucro_divida_str = f"## Lucro/Divida {round(receita - despesa,2)}"
-        st.markdown(lucro_divida_str)
+        try:
+            despesa = transacoes[transacoes['tipo_input']=='Despesa']['valor_input'].sum()
+            despesa_str = f"## Despesa {round(despesa,2)}"
+            st.markdown(despesa_str)
+        except:
+            pass 
 
-        group_despesa = transacoes[transacoes['tipo_input']=='Despesa'].groupby(by=['area_input'])['valor_input'].sum()
-        st.bar_chart(group_despesa)
+        try:
+            lucro_divida_str = f"## Lucro/Divida {round(receita - despesa,2)}"
+            st.markdown(lucro_divida_str)
+        except:
+            pass 
 
-        group_despesa_local = transacoes[transacoes['tipo_input']=='Despesa'].groupby(by=['local_input'])['valor_input'].sum()
-        st.bar_chart(group_despesa_local)
+        try:
+            group_despesa = transacoes[transacoes['tipo_input']=='Despesa'].groupby(by=['area_input'])['valor_input'].sum()
+            st.bar_chart(group_despesa)
+        except:
+            pass 
 
-        group_receita = transacoes[transacoes['tipo_input']=='Receita'].groupby(by=['area_input'])['valor_input'].sum()
-        st.bar_chart(group_receita)
+        try:
+            group_despesa_local = transacoes[transacoes['tipo_input']=='Despesa'].groupby(by=['local_input'])['valor_input'].sum()
+            st.bar_chart(group_despesa_local)
+        except:
+            pass
 
-        group_receita_local = transacoes[transacoes['tipo_input']=='Receita'].groupby(by=['local_input'])['valor_input'].sum()
-        st.bar_chart(group_receita_local)
+        try:
+            group_receita = transacoes[transacoes['tipo_input']=='Receita'].groupby(by=['area_input'])['valor_input'].sum()
+            st.bar_chart(group_receita)
+        except:
+            pass 
 
+        try:    
+            group_receita_local = transacoes[transacoes['tipo_input']=='Receita'].groupby(by=['local_input'])['valor_input'].sum()
+            st.bar_chart(group_receita_local)
+        except:
+            pass 
 
-        daily_sum_despesa = transacoes[transacoes['tipo_input']=='Despesa'].groupby(pd.to_datetime(transacoes['dia_input']).dt.date)['valor_input'].sum()
-        st.line_chart(daily_sum_despesa)    
+        try:
+            daily_sum_despesa = transacoes[transacoes['tipo_input']=='Despesa'].groupby(pd.to_datetime(transacoes['dia_input']).dt.date)['valor_input'].sum()
+            st.line_chart(daily_sum_despesa)    
+        except:
+            pass
 
-        daily_sum_receita = transacoes[transacoes['tipo_input']=='Receita'].groupby(pd.to_datetime(transacoes['dia_input']).dt.date)['valor_input'].sum()
-        st.bar_chart(daily_sum_receita)    
+        try:
+            daily_sum_receita = transacoes[transacoes['tipo_input']=='Receita'].groupby(pd.to_datetime(transacoes['dia_input']).dt.date)['valor_input'].sum()
+            st.bar_chart(daily_sum_receita)    
+        except:
+            pass
+
+    st.button("Log out", on_click=st.logout)
