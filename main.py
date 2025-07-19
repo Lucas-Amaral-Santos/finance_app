@@ -22,7 +22,7 @@ else:
 
     st.markdown('# Finanças')
 
-    # st.header(f'Bem-vindo {st.user.given_name}')
+    st.header(f'Bem-vindo {st.user.given_name}')
     st.image(st.user.picture)
 
     # st.json(st.user)
