@@ -10,7 +10,7 @@ import json
 
 if not st.user.is_logged_in:
 
-    st.title('Authentication')
+    st.title('Autenteque-se antes de entrar')
 
 
     if st.button("Entrar com Google", icon=":material/g_mobiledata:"):
