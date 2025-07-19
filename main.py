@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 import altair as alt
+from google.oauth2 import service_account
 from google.cloud import firestore
 import json
 
@@ -26,10 +27,10 @@ else:
 
 
 
-    #firestore_client = firestore.Client.from_service_account_json('ifinance-key.json')
-    key_dict = json.loads(st.secrets["textkey"])
-    creds = service_account.Credentials.from_service_account_info(key_dict)
-    firestore_client = firestore.Client(credentials=creds, project="ifinance-9a0f9")
+    firestore_client = firestore.Client.from_service_account_json('firestore-key.json')
+    # key_dict = json.loads(st.secrets["textkey"])
+    # creds = service_account.Credentials.from_service_account_info(key_dict)
+    # firestore_client = firestore.Client(credentials=creds, project="ifinance")
 
     print(firestore_client.project)
 
