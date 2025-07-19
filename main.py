@@ -27,10 +27,11 @@ else:
 
 
 
-    firestore_client = firestore.Client.from_service_account_json('firestore-key.json')
-    # key_dict = json.loads(st.secrets["textkey"])
-    # creds = service_account.Credentials.from_service_account_info(key_dict)
-    # firestore_client = firestore.Client(credentials=creds, project="ifinance")
+    #firestore_client = firestore.Client.from_service_account_json('firestore-key.json')
+    key_dict = st.secrets["gcp"]
+    creds = service_account.Credentials.from_service_account_info(key_dict)
+    
+    firestore_client = firestore.Client(credentials=creds, project=key_dict["project_id"])
 
     print(firestore_client.project)
 
