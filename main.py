@@ -89,7 +89,6 @@ else:
 
     # You can also use "with" notation:
     with tab1:
-
         tipo_options = ['Despesa', 'Receita']
         tipo_input = st.selectbox('Tipo', tipo_options)
 
@@ -102,13 +101,20 @@ else:
             # area_options = ['Salário', 'Outro']
             area_options = get_document_values_as_list('area_options_receita', tab_auxiliares_ref)
 
+        fixa_check = st.checkbox("Fixa")
+
+        parcela_check = st.checkbox("Parcela")
+
+        if parcela_check:
+            n_parcelas = st.number_input("Número de parcelas a partir do mês da fatura selecionado", 0, 1000)
+
         area_input = st.selectbox("Área", area_options)
 
         local_input = st.text_input("Local/empresa")
 
         valor_input = st.number_input('Valor')
 
-        cartao_options = ['itau', 'latam']
+        cartao_options = ['Itaú', 'Latam', 'PIX']
         cartao_input = st.selectbox('Cartão', cartao_options)
 
         moeda_options = ['R$', 'U$']
@@ -119,42 +125,50 @@ else:
         hora_input = st.time_input("Hora da compra")
 
         if st.button("Adicionar transação"):
-            print(f"DIA INPUT: {dia_input}")
-            nova_transacao = {
-                'area_input': area_input,
-                'local_input': local_input,
-                'valor_input': valor_input,
-                'tipo_input': tipo_input,
-                'moeda_input': moeda_input,
-                'mes': int(mes),
-                'cartao': cartao_input,
-                'dia_input': str(dia_input),
-                'hora_input': str(hora_input),
-                'user': st.user.email
-            }
 
-            doc_ref = transacoes_ref.document()
+            if fixa_check:
+                # TODO tabela de gastos e receitas fixas
+                pass
+            elif parcela_check:
+                # TODO tabela de gastos e receitas parceladas
+                pass
+            else:
+                print(f"DIA INPUT: {dia_input}")
+                nova_transacao = {
+                    'area_input': area_input,
+                    'local_input': local_input,
+                    'valor_input': valor_input,
+                    'tipo_input': tipo_input,
+                    'moeda_input': moeda_input,
+                    'mes': int(mes),
+                    'cartao': cartao_input,
+                    'dia_input': str(dia_input),
+                    'hora_input': str(hora_input),
+                    'user': st.user.email
+                }
 
-            nova_transacao['id'] = doc_ref.id
-            doc_ref.set(nova_transacao)
+                doc_ref = transacoes_ref.document()
 
-            # new_row_df = pd.DataFrame(
-            #     [{
-            #         'area_input': area_input,
-            #         'local_input': local_input,
-            #         'valor_input': valor_input,
-            #         'tipo_input': tipo_input,
-            #         'moeda_input': moeda_input,
-            #         'dia_input': dia_input,
-            #         'hora_input': hora_input,
-            #     }])
+                nova_transacao['id'] = doc_ref.id
+                doc_ref.set(nova_transacao)
 
-            # transacoes = pd.concat([transacoes, new_row_df], ignore_index=True)
-            # transacoes.to_csv(f'transacoes{mes}{datetime.today().year}.csv', sep=';', index=False)
+                # new_row_df = pd.DataFrame(
+                #     [{
+                #         'area_input': area_input,
+                #         'local_input': local_input,
+                #         'valor_input': valor_input,
+                #         'tipo_input': tipo_input,
+                #         'moeda_input': moeda_input,
+                #         'dia_input': dia_input,
+                #         'hora_input': hora_input,
+                #     }])
 
-            transacoes = get_transactions_dataframe_from_month(mes, transacoes_ref)
+                # transacoes = pd.concat([transacoes, new_row_df], ignore_index=True)
+                # transacoes.to_csv(f'transacoes{mes}{datetime.today().year}.csv', sep=';', index=False)
 
-            st.write("Transação adicionada com sucesso!")
+                transacoes = get_transactions_dataframe_from_month(mes, transacoes_ref)
+
+                st.write("Transação adicionada com sucesso!")
 
 
     with tab2:
