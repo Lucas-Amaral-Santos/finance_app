@@ -6,8 +6,9 @@ from google.oauth2 import service_account
 from google.cloud import firestore
 import json
 
+st.set_page_config(page_title="ifinance", page_icon='logo.png')
 
-
+st.logo("logo.png", size="large")
 if not st.user.is_logged_in:
 
     st.title('Autentique-se para acessar.')
@@ -31,7 +32,7 @@ else:
     #firestore_client = firestore.Client.from_service_account_json('firestore-key.json')
     key_dict = st.secrets["gcp"]
     creds = service_account.Credentials.from_service_account_info(key_dict)
-    
+
     firestore_client = firestore.Client(credentials=creds, project=key_dict["project_id"])
 
     print(firestore_client.project)
@@ -58,7 +59,7 @@ else:
         for doc in docs:
             doc_dict = doc.to_dict()
             print(f"{doc_dict['user']} == {st.user.email} || {doc_dict['mes']} ({type(doc_dict['mes'])}) == {mes}({type(mes)}) --> {doc_dict['mes'] == mes and doc_dict['user']==st.user.email}")
-            if doc_dict['mes'] == mes and doc_dict['user']==st.user.email:      
+            if doc_dict['mes'] == mes and doc_dict['user']==st.user.email:
                 data.append(doc_dict)
 
         return pd.DataFrame(data)
@@ -94,7 +95,7 @@ else:
 
         if tipo_input == 'Despesa':
             #area_options = ['Refeição', 'Bar', 'Lanche', 'Café', 'Vestuário', 'Supermercado', 'Utensílios', 'Lazer', 'Transporte', 'Lavanderia']
-            
+
             area_options = get_document_values_as_list('area_options_despesa', tab_auxiliares_ref)
 
         elif tipo_input == 'Receita':
@@ -184,7 +185,7 @@ else:
                 # print(event.selection["rows"])
                 list = transacoes.iloc[event.selection["rows"]]['id'].tolist()
                 print(transacoes.iloc[event.selection["rows"]]['id'].tolist())
-                if delete_documents_from_id_list(list, transacoes_ref):                    
+                if delete_documents_from_id_list(list, transacoes_ref):
                     transacoes = get_transactions_dataframe_from_month(mes, transacoes_ref)
                     st.session_state.df = transacoes
                     st.write('Transações apagadas com sucesso!')
@@ -207,19 +208,19 @@ else:
             despesa_str = f"## Despesa {round(despesa,2)}"
             st.markdown(despesa_str)
         except:
-            pass 
+            pass
 
         try:
             lucro_divida_str = f"## Lucro/Divida {round(receita - despesa,2)}"
             st.markdown(lucro_divida_str)
         except:
-            pass 
+            pass
 
         try:
             group_despesa = transacoes[transacoes['tipo_input']=='Despesa'].groupby(by=['area_input'])['valor_input'].sum()
             st.bar_chart(group_despesa)
         except:
-            pass 
+            pass
 
         try:
             group_despesa_local = transacoes[transacoes['tipo_input']=='Despesa'].groupby(by=['local_input'])['valor_input'].sum()
@@ -231,23 +232,23 @@ else:
             group_receita = transacoes[transacoes['tipo_input']=='Receita'].groupby(by=['area_input'])['valor_input'].sum()
             st.bar_chart(group_receita)
         except:
-            pass 
+            pass
 
-        try:    
+        try:
             group_receita_local = transacoes[transacoes['tipo_input']=='Receita'].groupby(by=['local_input'])['valor_input'].sum()
             st.bar_chart(group_receita_local)
         except:
-            pass 
+            pass
 
         try:
             daily_sum_despesa = transacoes[transacoes['tipo_input']=='Despesa'].groupby(pd.to_datetime(transacoes['dia_input']).dt.date)['valor_input'].sum()
-            st.line_chart(daily_sum_despesa)    
+            st.line_chart(daily_sum_despesa)
         except:
             pass
 
         try:
             daily_sum_receita = transacoes[transacoes['tipo_input']=='Receita'].groupby(pd.to_datetime(transacoes['dia_input']).dt.date)['valor_input'].sum()
-            st.bar_chart(daily_sum_receita)    
+            st.bar_chart(daily_sum_receita)
         except:
             pass
 
