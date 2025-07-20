@@ -195,42 +195,50 @@ else:
 
 
     with tab3:
+        col1, col2, col3 = st.columns(3)
+
 
         try:
             receita = transacoes[transacoes['tipo_input']=='Receita']['valor_input'].sum()
-            receita_str = f"## Receita {round(receita, 2)}"
-            st.markdown(receita_str)
+            # receita_str = f"## Receita {round(receita, 2)}"
+            #st.markdown(receita_str)
+            col1.metric("Receita", "R${:,.2f}".format(receita), border=True)
+
         except:
-            pass
+            st.markdown("### *Não há receitas a serem calculadas.*")
+
 
         try:
             despesa = transacoes[transacoes['tipo_input']=='Despesa']['valor_input'].sum()
-            despesa_str = f"## Despesa {round(despesa,2)}"
-            st.markdown(despesa_str)
+            # despesa_str = f"## Despesa {round(despesa,2)}"
+            col2.metric("Despesa", "R${:,.2f}".format(despesa), border=True)
         except:
-            pass
+            st.markdown("### *Não há despesas a serem calculadas.*")
 
         try:
-            lucro_divida_str = f"## Lucro/Divida {round(receita - despesa,2)}"
-            st.markdown(lucro_divida_str)
+            # lucro_divida_str = f"## Lucro/Divida {round(receita - despesa,2)}"
+            # st.markdown(lucro_divida_str)
+            col3.metric("Saldo", "R${:,.2f}".format(receita-despesa), delta=round(receita-despesa,2), border=True)
         except:
-            pass
+            st.markdown("### *Não há saldo a ser calculadas.*")
 
         try:
             group_despesa = transacoes[transacoes['tipo_input']=='Despesa'].groupby(by=['area_input'])['valor_input'].sum()
-            st.bar_chart(group_despesa)
+            st.markdown("###### Gastos por tipo de transação")
+            st.bar_chart(group_despesa, x_label="Gastos", y_label="Tipo de transação")
         except:
             pass
 
         try:
             group_despesa_local = transacoes[transacoes['tipo_input']=='Despesa'].groupby(by=['local_input'])['valor_input'].sum()
-            st.bar_chart(group_despesa_local)
+            st.markdown("###### Gastos por estabelecimento ou localidade")
+            st.bar_chart(group_despesa_local, x_label="Gastos", y_label="Estabelecimento de transação")
         except:
             pass
 
         try:
             group_receita = transacoes[transacoes['tipo_input']=='Receita'].groupby(by=['area_input'])['valor_input'].sum()
-            st.bar_chart(group_receita)
+            st.bar_chart(group_receita, x_label="Gastos", y_label="Área")
         except:
             pass
 
