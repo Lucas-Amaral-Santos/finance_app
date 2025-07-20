@@ -62,7 +62,20 @@ else:
             if doc_dict['mes'] == mes and doc_dict['user']==st.user.email:
                 data.append(doc_dict)
 
-        return pd.DataFrame(data)
+        return pd.DataFrame(data).rename(columns={
+            'area_input': "Área",
+            'local_input': "Local",
+            'valor_input': "Valor",
+            'tipo_input': "Tipo",
+            'moeda_input': "Moeda",
+            'mes': "Mês",
+            'cartao': "Forma Pgmt",
+            'dia_input': "Data",
+            'hora_input': "Hora",
+            'user': "Usuário",
+            'id': "ID"
+
+        })
 
     def get_document_values_as_list(doc_id, ref):
         doc_ref = ref.document(doc_id)
