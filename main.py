@@ -72,7 +72,7 @@ else:
 
     mes_options = [i for i in range(1,13)]
 
-    mes = st.selectbox("Mês", options=mes_options, index=datetime.today().month-1)
+    mes = st.selectbox("Selecione o mês da fatura", options=mes_options, index=datetime.today().month-1)
 
 
     transacoes = get_transactions_dataframe_from_month(mes, transacoes_ref)
@@ -238,25 +238,29 @@ else:
 
         try:
             group_receita = transacoes[transacoes['tipo_input']=='Receita'].groupby(by=['area_input'])['valor_input'].sum()
-            st.bar_chart(group_receita, x_label="Gastos", y_label="Área")
+            st.markdown("###### Recebimentos por área")
+            st.bar_chart(group_receita, x_label="Área", y_label="Valor recebido")
         except:
             pass
 
         try:
             group_receita_local = transacoes[transacoes['tipo_input']=='Receita'].groupby(by=['local_input'])['valor_input'].sum()
-            st.bar_chart(group_receita_local)
+            st.markdown("###### Receita por estabelecimento ou localidade")
+            st.bar_chart(group_receita_local, x_label="Estabelecimentos/localidades", y_label="Gastos")
         except:
             pass
 
         try:
             daily_sum_despesa = transacoes[transacoes['tipo_input']=='Despesa'].groupby(pd.to_datetime(transacoes['dia_input']).dt.date)['valor_input'].sum()
-            st.line_chart(daily_sum_despesa)
+            st.markdown("###### Gastos por dia do mês")
+            st.line_chart(daily_sum_despesa, x_label="Dias do mês da fatura", y_label="Gastos")
         except:
             pass
 
         try:
             daily_sum_receita = transacoes[transacoes['tipo_input']=='Receita'].groupby(pd.to_datetime(transacoes['dia_input']).dt.date)['valor_input'].sum()
-            st.bar_chart(daily_sum_receita)
+            st.markdown("###### Recebimentos por dia do mês")
+            st.bar_chart(daily_sum_receita, x_label="Dias do mês da fatura", y_label="Recebimentos")
         except:
             pass
 
