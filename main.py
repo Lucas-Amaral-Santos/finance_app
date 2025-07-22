@@ -200,11 +200,23 @@ else:
 
                 st.write("Transação adicionada com sucesso!")
 
-
     with tab2:
 
         if "transacoes" not in st.session_state:
-            st.session_state.df = transacoes
+            st.session_state.df = transacoes.rename(columns={
+                'cartao': 'Cartão',
+                'user': 'Usuário',
+                'dia_input': 'Data',
+                'id': 'ID',
+                'area_input': 'Área',
+                'local_input': 'Estabelecimento',
+                'mes': 'Mês',
+                'valor_input': 'Valor',
+                'tipo_input': 'Tipo',
+                'moeda_input': 'Moeda',
+                'descricao_input': 'Descrição',
+                'hora_input': 'Hora'
+            })
 
             event = st.dataframe(
                 st.session_state.df,
