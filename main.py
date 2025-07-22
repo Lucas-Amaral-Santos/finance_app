@@ -37,6 +37,34 @@ else:
 
     print(firestore_client.project)
 
+    with st.expander("Injetar dados de relatório"):
+        
+        uploaded = st.file_uploader("Anexe um arquivo CSV.")
+        
+        tabela_options = ['Transações']
+        tabela = st.selectbox("Selecione a tabela que deseja adicionar", options=tabela_options)
+
+        if st.button("Adicionar ao baco de dados:"):        
+            st.write("Adicionando dados...")
+            if uploaded.name.lower().endswith(".csv"):
+                df = pd.read_csv(uploaded, sep=',', index_col=None)
+            else:
+                df = pd.read_excel(uploaded, index_col=None)
+            
+            records = df.to_dict(orient='records')
+
+            if tabela == 'Transações':
+                collection_ref = firestore_client.collection('transacoes')
+
+            for record in records:
+                print(f"Adicionando record {record}.")
+                collection_ref.add(record)
+            
+            
+            st.write(f"{tabela} adicionadas com sucesso.")
+
+        
+
     transacoes_ref = firestore_client.collection('transacoes')
 
     tab_auxiliares_ref = firestore_client.collection('tabelas_auxiliares')
@@ -50,7 +78,6 @@ else:
             document.delete()
 
         return True
-
 
     def get_transactions_dataframe_from_month(mes, ref):
         docs = ref.stream()
@@ -110,7 +137,9 @@ else:
 
         area_input = st.selectbox("Área", area_options)
 
-        local_input = st.text_input("Local/empresa")
+        local_input = st.text_input("Estabelecimento/Local/empresa")
+
+        descricao_input = st.text_input("Descrição")
 
         valor_input = st.number_input('Valor')
 
@@ -137,6 +166,7 @@ else:
                 nova_transacao = {
                     'area_input': area_input,
                     'local_input': local_input,
+                    'descricao_input': descricao_input,
                     'valor_input': valor_input,
                     'tipo_input': tipo_input,
                     'moeda_input': moeda_input,
