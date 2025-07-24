@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 import altair as alt
 from google.oauth2 import service_account
 from google.cloud import firestore
@@ -38,19 +39,19 @@ else:
     print(firestore_client.project)
 
     with st.expander("Injetar dados de relatório"):
-        
+
         uploaded = st.file_uploader("Anexe um arquivo CSV.")
-        
+
         tabela_options = ['Transações']
         tabela = st.selectbox("Selecione a tabela que deseja adicionar", options=tabela_options)
 
-        if st.button("Adicionar ao baco de dados:"):        
+        if st.button("Adicionar ao baco de dados:"):
             st.write("Adicionando dados...")
             if uploaded.name.lower().endswith(".csv"):
                 df = pd.read_csv(uploaded, sep=',', index_col=None)
             else:
                 df = pd.read_excel(uploaded, index_col=None)
-            
+
             records = df.to_dict(orient='records')
 
             if tabela == 'Transações':
@@ -59,16 +60,33 @@ else:
             for record in records:
                 print(f"Adicionando record {record}.")
                 collection_ref.add(record)
-            
-            
+
+
             st.write(f"{tabela} adicionadas com sucesso.")
 
-        
+
 
     transacoes_ref = firestore_client.collection('transacoes')
 
     tab_auxiliares_ref = firestore_client.collection('tabelas_auxiliares')
 
+    def iterate_dates_by_month(start_date, end_date):
+        """
+        Iterates through dates from a start date to an end date, month by month.
+
+        Args:
+            start_date (datetime.date): The initial date.
+            end_date (datetime.date): The final date.
+
+        Yields:
+            datetime.date: The first day of each month within the range.
+        """
+        parcela=1
+        current_date = start_date
+        while current_date <= end_date:
+            yield parcela, current_date
+            parcela += 1
+            current_date += relativedelta(months=1)
 
     def delete_documents_from_id_list(list, ref):
 
@@ -116,6 +134,7 @@ else:
 
     # You can also use "with" notation:
     with tab1:
+
         tipo_options = ['Despesa', 'Receita']
         tipo_input = st.selectbox('Tipo', tipo_options)
 
@@ -135,13 +154,21 @@ else:
         if parcela_check:
             n_parcelas = st.number_input("Número de parcelas a partir do mês da fatura selecionado", 0, 1000)
 
+            col1, col2 = st.columns(2)
+            month_ini = col1.number_input('Mês da efetuação da compra', value=datetime.today().month)
+            year_fim = col2.number_input('Mês da do início da compra', value=datetime.today().year)
+            valor_total = st.number_input("Valor total")
+
         area_input = st.selectbox("Área", area_options)
 
         local_input = st.text_input("Estabelecimento/Local/empresa")
 
         descricao_input = st.text_input("Descrição")
 
-        valor_input = st.number_input('Valor')
+        if parcela_check:
+            valor_input = st.number_input('Valor', value= valor_total/n_parcelas if valor_total and n_parcelas else 0)
+        else:
+            valor_input = st.number_input('Valor')
 
         cartao_options = ['Itaú', 'Latam', 'PIX']
         cartao_input = st.selectbox('Cartão', cartao_options)
@@ -159,8 +186,37 @@ else:
                 # TODO tabela de gastos e receitas fixas
                 pass
             elif parcela_check:
-                # TODO tabela de gastos e receitas parceladas
-                pass
+
+                data_ini = dia_input.replace(month=month_ini, year=year_fim)
+                data_fim = data_ini + relativedelta(months=n_parcelas)
+                for parcela, data_pgto in iterate_dates_by_month(data_ini, data_fim):
+                    print(f"DIA INPUT: {dia_input}")
+                    nova_transacao = {
+                        'area_input': area_input,
+                        'local_input': local_input,
+                        'descricao_input': descricao_input,
+                        'valor_input': valor_input,
+                        'tipo_input': tipo_input,
+                        'moeda_input': moeda_input,
+                        'mes': int(data_pgto.month),
+                        'cartao': cartao_input,
+                        'dia_input': str(data_pgto),
+                        'hora_input': str(hora_input),
+                        'valor_total': valor_total,
+                        'parcelas': n_parcelas,
+                        'parcela_atual': parcela,
+                        'fim_do_pagamento': str(data_fim),
+                        'user': st.user.email
+                    }
+
+                    doc_ref = transacoes_ref.document()
+
+                    nova_transacao['id'] = doc_ref.id
+                    doc_ref.set(nova_transacao)
+
+                transacoes = get_transactions_dataframe_from_month(mes, transacoes_ref)
+                st.write("Transações parceladas adicionada com sucesso!")
+
             else:
                 print(f"DIA INPUT: {dia_input}")
                 nova_transacao = {
