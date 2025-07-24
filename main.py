@@ -70,6 +70,8 @@ else:
 
     tab_auxiliares_ref = firestore_client.collection('tabelas_auxiliares')
 
+    forma_pgto_ref = firestore_client.collection('forma_pagto')
+
     def iterate_dates_by_month(start_date, end_date):
         """
         Iterates through dates from a start date to an end date, month by month.
@@ -97,6 +99,17 @@ else:
 
         return True
 
+    def get_forma_pgto_list_usuario(user, ref):
+        docs = ref.stream()
+
+        data = []
+        for doc in docs:
+            doc_dict = doc.to_dict()
+            if doc_dict['user']==st.user.email:
+                data.append(doc_dict['forma_pagto'])
+
+        return data
+
     def get_transactions_dataframe_from_month(mes, ref):
         docs = ref.stream()
 
@@ -114,11 +127,9 @@ else:
         doc = doc_ref.get()
         return list(doc.to_dict().values())
 
-
     mes_options = [i for i in range(1,13)]
 
     mes = st.selectbox("Selecione o mês da fatura", options=mes_options, index=datetime.today().month-1)
-
 
     transacoes = get_transactions_dataframe_from_month(mes, transacoes_ref)
 
@@ -127,10 +138,11 @@ else:
     # except:
     #     transacoes = pd.DataFrame(columns=['area_input','local_input','valor_input','tipo_input','moeda_input','dia_input','hora_input'])
 
-    tab1, tab2, tab3 = st.tabs(["Compras", "Extrato", 'Visão Geral'])
+    tab1, tab2, tab3, tab4 = st.tabs(["Compras", "Extrato", 'Visão Geral', 'Tabelas Auxiliares'])
     tab1.write("Adicionar compras")
     tab2.write("Extrato")
-    tab2.write("Visão Geral")
+    tab3.write("Visão Geral - Dashboard")
+    tab4.write("Tabelas auxiliares")
 
     # You can also use "with" notation:
     with tab1:
@@ -170,8 +182,9 @@ else:
         else:
             valor_input = st.number_input('Valor')
 
-        cartao_options = ['Itaú', 'Latam', 'PIX']
-        cartao_input = st.selectbox('Cartão', cartao_options)
+
+        forma_pgto_options = get_forma_pgto_list_usuario(st.user.email, forma_pgto_ref)
+        forma_pgto_input = st.selectbox('Cartão', forma_pgto_options)
 
         moeda_options = ['R$', 'U$']
         moeda_input = st.selectbox('Moeda', moeda_options)
@@ -199,7 +212,7 @@ else:
                         'tipo_input': tipo_input,
                         'moeda_input': moeda_input,
                         'mes': int(data_pgto.month),
-                        'cartao': cartao_input,
+                        'forma_pgto_input': forma_pgto_input,
                         'dia_input': str(data_pgto),
                         'hora_input': str(hora_input),
                         'valor_total': valor_total,
@@ -227,7 +240,7 @@ else:
                     'tipo_input': tipo_input,
                     'moeda_input': moeda_input,
                     'mes': int(mes),
-                    'cartao': cartao_input,
+                    'forma_pgto_input': forma_pgto_input,
                     'dia_input': str(dia_input),
                     'hora_input': str(hora_input),
                     'user': st.user.email
@@ -375,5 +388,26 @@ else:
             st.bar_chart(daily_sum_receita, x_label="Dias do mês da fatura", y_label="Recebimentos")
         except:
             pass
+
+    with tab4:
+
+        st.markdown("## Forma de pagamento")
+
+        forma_pagto = st.text_input("Adicione forma de pagamento")
+
+        if st.button('Adicione forma de pagamento'):
+            nova_forma_pagto = {
+                'forma_pagto': forma_pagto,
+                'user': st.user.email
+            }
+
+            doc_ref = forma_pgto_ref.document()
+
+            doc_ref.set(nova_forma_pagto)
+
+            transacoes = get_transactions_dataframe_from_month(mes, transacoes_ref)
+
+            st.write("Forma de pagamanento adicionada com sucesso!")
+
 
     st.button("Log out", on_click=st.logout)
